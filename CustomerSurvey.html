@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Customer Survey Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f2f2f2;
+            background-color: #0D99E8;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            margin-top: 20px;
+            margin-left: 28%;
+            margin-right: 10%;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-top: 5px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        button {
+            background: #333;
+            color: #fff;
+            border: 0;
+            border-radius: 3px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        button:hover {
+            background: #555;
+            text-align: center;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        p{
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Customer Survey Form</h1>
+    <div class="container">
+        <form id="surveyForm">
+            <label for="firstName">Name:</label>
+            <input type="text" id="firstName" required>
+
+            <label for="email">Email :</label>
+            <input type="email" id="email" required>
+
+            <label for="firstTime">Is this first time You are using our products & service?</label><br>
+            <input type="radio" name="firstTime" value="Yes" required> Yes
+            <input type="radio" name="firstTime" value="No" required> No
+
+            <label for="recommendation">Would you suggestion to your friends and colleagues?</label><br>
+            <input type="radio" name="recommendation" value="Yes"> Yes
+            <input type="radio" name="recommendation" value="No"> No
+
+            <label for="satisfaction">How satisfied are you with our company overall?</label><br>
+            <input type="radio" name="satisfaction" value="Satisfied"> Satisfied
+            <input type="radio" name="satisfaction" value="Undecided"> Undecided
+            <input type="radio" name="satisfaction" value="Unsatisfied"> Unsatisfied
+
+            <label for="suggestions">Do you have suggestions to improve our service?</label><br>
+            <textarea id="suggestions" rows="4" cols="50"></textarea>
+
+            <button type="button" onclick="submitForm()">SUBMIT</button>
+
+        </form>
+    </div>
+
+    <p>&copy; 2018 Customer Survey Form. All Rights Reserved. Design by <span style="color: white;">W3Layouts</span></p>
+
+    <script>
+        function submitForm() {
+            if (document.getElementById('surveyForm').checkValidity()) {
+                const firstName = document.getElementById('firstName').value;
+                const email = document.getElementById('email').value;
+                const firstTime = document.querySelector('input[name="firstTime"]:checked').value;
+                const recommendation = document.querySelectorAll('input[name="recommendation"]:checked').value;
+                const satisfaction = document.querySelector('input[name="satisfaction"]:checked').value;
+                const suggestions = document.getElementById('suggestions').value;
+
+                alert("Survey Summary:\n\n" +
+                    "Name: " + firstName + "\n" +
+                    "Email: " + email + "\n" +
+                    "Is this your first time: " + firstTime + "\n" +
+                    "Recommendation: " + recommendation + "\n" +
+                    "Satisfaction: " + satisfaction + "\n" +
+                    "Suggestions: " + suggestions);
+
+                document.getElementById('surveyForm').reset();
+            }
+        }
+    </script>
+</body>
+
+</html>
